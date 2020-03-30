@@ -16,12 +16,13 @@
             <p><font color = #C0C0C0>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</font></p>
 		</div>
 
+		{% for post in posts %}
 		<div>
-			<p><font color = #C0C0C0>published: 14.06.2014, 12:14</font></p>
-            <h2><a href=""><font color = #C0C0C0>My second post</font></a></h2>
-            <p><font color = #C0C0C0>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</font></p>
+			<p>published: {{post.published_date}}</p>
+			<h2><a href="https://www.carwale.com/best-sedans-in-india/">{{post.title}}</a></h2>
+			<p>{{post.text|linebreaksbr}}</p>
 		</div>
-
+		{% endfor %}
 
 	</body>
 </html>
