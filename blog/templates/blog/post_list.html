@@ -1,28 +1,13 @@
-<html>
-	<head>
-		<title>Manoj's page for Djangogirls</title>
-	</head>
-	<body style = "background-color:#8000ff">
-		<div>
-			<h1><font color = #C0C0C0>This is just a test link</font></h1>
-			<p><font color = #C0C0C0>If you wnat to know what i like, just click the link below. This is just for a fun
-			</font></p>
-			<a href="https://www.porsche.com/middle-east/_india_/"><font face= "arial" color = #D4AF37>This is what i like</font></a>
-		</div>
+{% extends 'blog/base.html' %}
 
-		<div>
-			 <p>published: 14.06.2014, 12:14</p>
-            <h2><a href=""><font color = #C0C0C0>My first post</font></a></h2>
-            <p><font color = #C0C0C0>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</font></p>
-		</div>
-
-		{% for post in posts %}
-		<div>
-			<p>published: {{post.published_date}}</p>
-			<h2><a href="https://www.carwale.com/best-sedans-in-india/">{{post.title}}</a></h2>
-			<p>{{post.text|linebreaksbr}}</p>
-		</div>
-		{% endfor %}
-
-	</body>
-</html>
+{% block content %}
+	{% for post in posts %}
+    	<div class="post">
+        	<div class="date">
+            	<p>published: {{ post.published_date }}</p>
+        	</div>
+        	<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        	<p>{{ post.text|linebreaksbr }}</p>
+    	</div>
+	{% endfor %}
+{% endblock %}
